@@ -1,0 +1,141 @@
+.profile {
+  max-width: 1280px;
+  min-width: 320px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.profile__content {
+  width: calc(100% - 140px);
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 74px 0 70px 0;
+}
+
+.profile__title {
+  max-width: 410px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: 500;
+}
+
+.profile__form {
+  width: 410px;
+  margin: 123px auto 0 auto;
+}
+
+.profile__info {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.profile__input-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 0 16px 0;
+  border-bottom: 1px solid rgba(232, 232, 232, 1);
+}
+
+.profile__input-wrapper:last-child {
+  border: none;
+  margin: 17px 0 0 0;
+}
+
+.profile__input-tag {
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 500;
+}
+
+.profile__input {
+  text-align: right;
+  max-width: 200px;
+  padding: 0;
+  border: 0;
+  outline: none;
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 500;
+}
+
+.profile__save-button {
+  display: block;
+  border: none;
+  background-color: transparent;
+  margin: 204px auto 0 auto;
+  box-sizing: border-box;
+  padding: 0;
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 400;
+  color: #000;
+  text-align: center;
+  transition: opacity .2s ease-in-out;
+}
+
+.profile__save-button:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.profile__logout-button {
+  display: block;
+  border: none;
+  background-color: transparent;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 16px auto 0 auto;
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 500;
+  color: rgba(255, 64, 98, 1);
+  transition: opacity .2s ease-in-out;
+}
+
+.profile__logout-button:hover {
+  opacity: .5;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .profile__content {
+    width: calc(100% - 60px);
+    padding: 236px 0 269px 0;
+  }
+
+  .profile__form {
+    margin: 96px auto 0 auto;
+  }
+
+  .profile__save-button {
+    margin: 194px auto 0 auto;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .profile__content {
+    width: calc(100% - 28px);
+    padding: 70px 0 40px 0;
+  }
+
+  .profile__form {
+    margin: 80px auto 0 auto;
+    width: calc(100% * (75 / 208) + 154.712px);
+  }
+
+  .profile__save-button {
+    margin: 362px auto 0 auto;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .profile__logout-button {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
