@@ -2,6 +2,7 @@ class FormValidator {
   constructor(objSelectors, formElement) {
     this._objSelectors = objSelectors;
     this._formElement = formElement;
+    this._regExp = /^[а-яА-Яa-zA-ZЁёәіңғүұқөһӘІҢҒҮҰҚӨҺ\-\s]*$/uig;
   }
 
   enableValidation = () => {
@@ -25,23 +26,21 @@ class FormValidator {
   }
 
   _checkInputValidity = (inputElement) => {
+    // if (inputElement.name === 'name') {
+    //   if (!(inputElement.validity.valid && this._regExp.test(inputElement.value))) {
+    //     console.log(this._regExp.test(inputElement.value));
+    //     this._showInputError(inputElement, inputElement.validationMessage);
+    //     // setTimeout(this._showInputError, 0, inputElement, inputElement.validationMessage);
+    //   } else {
+    //     this._hideInputError(inputElement);
+    //     // setTimeout(this._hideInputError, 0, inputElement);
+    //   }
+    // } else
     if (!inputElement.validity.valid) {
-      console.log('Hi!');
       this._showInputError(inputElement, inputElement.validationMessage);
     } else {
-      console.log('Bye!');
       this._hideInputError(inputElement);
     }
-  }
-
-  _disableSubmitButton = () => {
-    this._buttonElement.classList.add(this._objSelectors['inactiveButtonClass']);
-    this._buttonElement.setAttribute('disabled', true);
-  }
-
-  _ableSubmitButton = () => {
-    this._buttonElement.classList.remove(this._objSelectors['inactiveButtonClass']);
-    this._buttonElement.removeAttribute('disabled', false);
   }
 
   _toggleButtonState = () => {
@@ -54,13 +53,34 @@ class FormValidator {
 
   _hasInvalidInput = () => {
     return this._inputList.some((input) => {
+      // if (input.name === 'name') {
+      //   return input.validity.valid === false || this._regExp.test(input.value);
+      // }
       return input.validity.valid === false;
+    }) || this._inputList.some((input) => {
+      return input.value === '';
     });
+  }
+
+  _disableSubmitButton = () => {
+    this._buttonElement.classList.add(this._objSelectors['inactiveButtonClass']);
+    this._buttonElement.setAttribute('disabled', true);
+  }
+
+  _ableSubmitButton = () => {
+    this._buttonElement.classList.remove(this._objSelectors['inactiveButtonClass']);
+    this._buttonElement.removeAttribute('disabled', false);
   }
 
   _showInputError = (inputElement, errorMessage) => {
     this._errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(this._objSelectors['inputErrorClass']);
+    // if (inputElement.name === 'name' && !this._regExp.test(inputElement.value)) {
+    //   console.log(`_showInputError: ${inputElement.name === 'name' && !this._regExp.test(inputElement.value)}.`);
+    //   this._errorElement.textContent = 'Невалидное значение поля имени...';
+    // } else {
+    //   this._errorElement.textContent = errorMessage;
+    // }
     this._errorElement.textContent = errorMessage;
     this._errorElement.classList.add(this._objSelectors['errorClass']);
   }

@@ -1,22 +1,37 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import InfoForm from '../InfoForm/InfoForm';
 
-const Register = () => {
+const Register = ({ onRegister, isAuthError, errorMsg, setIsAuthError }) => {
   const [ name, setName ] = useState('');
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
+  const submitButtonRef = useRef(null);
+
+  useEffect(() => {
+    setIsAuthError(false);
+  }, []);
 
   function handleNameChange(evt) {
     setName(evt.target.value);
+    setIsAuthError(false);
   }
 
   function handleEmailChange(evt) {
     setEmail(evt.target.value);
+    setIsAuthError(false);
   }
 
   function handlePasswordChange(evt) {
     setPassword(evt.target.value);
+    setIsAuthError(false);
+  }
+
+  function handleRegister() {
+    onRegister(name, email, password, submitButtonRef);
+    setName('');
+    setEmail('');
+    setPassword('');
   }
 
   return (
@@ -25,7 +40,13 @@ const Register = () => {
         <Link to="/" className="register__logo" />
         <h2 className="register__title">Добро пожаловать!</h2>
       </div>
-        <InfoForm title={'Зарегистрироваться'}>
+        <InfoForm
+          title={'Зарегистрироваться'}
+          onSubmit={handleRegister}
+          submitButtonRef={submitButtonRef}
+          isAuthError={isAuthError}
+          errorMsg={errorMsg}
+        >
           <div className="register__inputs">
             <label className="info-form__label" htmlFor="name-input">
               Имя

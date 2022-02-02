@@ -1,17 +1,30 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import InfoForm from '../InfoForm/InfoForm';
 
-const Login = () => {
+const Login = ({ onLogin, isAuthError, errorMsg, setIsAuthError }) => {
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
+  const submitButtonRef = useRef();
+
+  useEffect(() => {
+    setIsAuthError(false);
+  }, []);
 
   function handleEmailChange(evt) {
     setEmail(evt.target.value);
+    setIsAuthError(false);
   }
 
   function handlePasswordChange(evt) {
     setPassword(evt.target.value);
+    setIsAuthError(false);
+  }
+
+  function handleLogin () {
+    onLogin(email, password, submitButtonRef);
+    setEmail('');
+    setPassword('');
   }
 
   return (
@@ -20,7 +33,13 @@ const Login = () => {
         <Link to="/" className="login__logo" />
         <h2 className="login__title">Рады видеть!</h2>
       </div>
-      <InfoForm title={'Войти'}>
+      <InfoForm
+        title={'Войти'}
+        onSubmit={handleLogin}
+        submitButtonRef={submitButtonRef}
+        isAuthError={isAuthError}
+        errorMsg={errorMsg}
+      >
         <div className="login__inputs">
           <label className="info-form__label" htmlFor="email-input">
             E-mail

@@ -15,6 +15,20 @@
   padding: 0;
 }
 
+.info-form__error-message {
+  display: none;
+  margin: auto 0 0 0;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  font-weight: 400;
+  color:rgba(255, 64, 98, 1);
+}
+
+.info-form__error-message_active {
+  display: block;
+}
+
 .info-form__save-button {
   display: block;
   width: 100%;
@@ -139,5 +153,9 @@
   .info-form__login-link {
     font-size: 12px;
     line-height: 15px;
+  }
+
+  .info-form__error-message {
+    margin: auto 0 15px 0;
   }
 }
