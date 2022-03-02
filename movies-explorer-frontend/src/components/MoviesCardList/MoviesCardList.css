@@ -14,6 +14,14 @@
   margin: 0 auto;
 }
 
+.movies-card-list__error {
+  margin: 40px auto 0 auto;
+  text-align: center;
+  font-size: 18px;
+  line-height: calc(20 / 18);
+  font-weight: 500;
+}
+
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .movies-card-list {
     width: calc(100% - 60px);

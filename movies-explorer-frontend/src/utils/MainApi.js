@@ -4,8 +4,6 @@ class Api {
   }
 
   async _checkResponse(res) {
-    // const result = await res.json();
-    // console.log('8. Api. result is: ', result);
     if (res.ok) {
       return res.json();
     }
@@ -25,7 +23,7 @@ class Api {
   patchCurrentUserData(newUserData) {
     return fetch(`${this._options.baseUrl}/users/me`, {
       method: 'PATCH',
-      headers: this._options.header,
+      headers: this._options.headers,
       credentials: 'include',
       body: JSON.stringify(newUserData),
     })
@@ -61,10 +59,8 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: 'http://localhost:3000',
+  baseUrl: 'https://api.moviechef.nomoredomains.rocks',
   headers: {
     'Content-Type': 'application/json',
-  }
+  },
 });
-
-// https://api.moviechef.nomoredomains.rocks

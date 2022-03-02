@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Navigation = () => {
   return (
     <div className="navigation header__navigation">
-      <Link to="/movies" className="navigation__link navigation__link_type_bold">Фильмы</Link>
-      <Link to="/saved-movies" className="navigation__link navigation__link_type_normal">Сохранённые фильмы</Link>
+      <NavLink to="/movies" className="navigation__link" activeClassName="navigation__link_active">Фильмы</NavLink>
+      <NavLink to="/saved-movies" className="navigation__link" activeClassName="navigation__link_active">Сохранённые фильмы</NavLink>
     </div>
   );
 };

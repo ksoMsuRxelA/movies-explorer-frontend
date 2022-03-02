@@ -108,3 +108,26 @@ export const savedCards = [
     isLiked: true,
   },
 ];
+
+export const objSelectors_Profile = {
+  inputSelector: '.profile__input',
+  submitButtonSelector: '.profile__save-button',
+  inactiveButtonClass: 'profile__save-button_disabled',
+  inputErrorClass: 'profile__input_type_error',
+  errorClass: 'profile__error-element_visible'
+};
+
+export const objSelectors_InfoForm = {
+  inputSelector: '.info-form__input',
+  submitButtonSelector: '.info-form__save-button',
+  inactiveButtonClass: 'info-form__save-button_disabled',
+  inputErrorClass: 'info-form__input_type_error',
+  errorClass: 'info-form__error-element_visible'
+};
+
+export const SHORT_MOVIE = 40;
+
+export const WINDOW_WIDTH = {
+  sizeL: 1136,
+  sizeM: 650,
+}

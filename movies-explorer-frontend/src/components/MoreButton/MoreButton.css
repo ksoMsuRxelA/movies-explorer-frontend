@@ -4,6 +4,10 @@
   padding: 50px 0 80px 0;
 }
 
+.more-button_hidden {
+  display: none;
+}
+
 .page__more-button {
   margin: 0 auto;
 }

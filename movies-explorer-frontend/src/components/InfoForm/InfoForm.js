@@ -1,19 +1,13 @@
 import { useRef, useEffect } from 'react';
 import FormValidator from '../../utils/FormValidator';
+import { objSelectors_InfoForm } from '../../utils/Consts';
 
 const InfoForm = ({ children, title, onSubmit, submitButtonRef, isAuthError, errorMsg }) => {
-  const objSelectors = {
-    inputSelector: '.info-form__input',
-    submitButtonSelector: '.info-form__save-button',
-    inactiveButtonClass: 'info-form__save-button_disabled',
-    inputErrorClass: 'info-form__input_type_error',
-    errorClass: 'info-form__error-element_visible'
-  };
   const currentValidationForm = useRef(null);
   const errorClassName = `info-form__error-message ${isAuthError ? 'info-form__error-message_active' : ''}`;
 
   useEffect(() => {
-    const formValidate = new FormValidator(objSelectors, currentValidationForm.current);
+    const formValidate = new FormValidator(objSelectors_InfoForm, currentValidationForm.current);
     formValidate.enableValidation();
     return () => {
       formValidate.disableValidation();

@@ -51,7 +51,7 @@ const Register = ({ onRegister, isAuthError, errorMsg, setIsAuthError }) => {
             <label className="info-form__label" htmlFor="name-input">
               Имя
             </label>
-            <input id="name-input" className="info-form__input" type="text" value={name} onChange={handleNameChange} placeholder="Ваше имя" name="name" required minLength="2" maxLength="30" />
+            <input id="name-input" className="info-form__input" type="text" value={name} onChange={handleNameChange} placeholder="Ваше имя" name="name" required minLength="2" maxLength="30" pattern="^[A-Za-zА-Яа-я\s-]{1,}$" />
             <span className="info-form__error-element name-input-error"></span>
             <label className="info-form__label" htmlFor="email-input">
               E-mail

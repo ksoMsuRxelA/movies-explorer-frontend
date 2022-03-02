@@ -68,6 +68,10 @@
   font-weight: 500;
 }
 
+.burger-menu__link_active {
+  font-weight: 900;
+}
+
 .burger-menu__link::before {
   content: '';
   position: absolute;

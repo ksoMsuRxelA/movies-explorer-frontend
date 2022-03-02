@@ -31,3 +31,11 @@ export const authorize = (email, password) => {
   })
   .then(checkResponse);
 }
+
+export const logout = () => {
+  return fetch(`${LOCAL_URL}/signout`, {
+    method: 'POST',
+    credentials: 'include',
+  })
+  .then(checkResponse);
+}

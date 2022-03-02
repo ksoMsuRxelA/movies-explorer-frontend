@@ -8,7 +8,7 @@ import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound';
-import { api } from '../../utils/Api';
+import { api } from '../../utils/MainApi';
 import * as Auth from '../../utils/Auth';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
@@ -31,10 +31,17 @@ function App() {
       history.push('/movies');
     })
     .catch((err) => {
-      console.log(`${err.message} (${err.status})`);
       history.push('/');
+      console.log(`${err.message} (${err.status})`);
     });
   }, [history]);
+
+  const handleSubmitError = (err, submitButtonRef) => {
+    disableSubmitButton(submitButtonRef);
+    setIsAuthError(true);
+    setErrorMsg(`${err.message}`);
+    console.log(`${err.message} ${err.status}`);
+  };
 
   const authenticateToMovies = (email, password, submitButtonRef) => {
     return Auth.authorize(email, password)
@@ -48,16 +55,17 @@ function App() {
         history.push('/movies');
       })
       .catch((err) => {
-        disableSubmitButton(submitButtonRef);
-        setIsAuthError(true);
-        setErrorMsg(`${err.message}`);
-        console.log(`${err.message} (${err.status})`);
+        handleSubmitError(err, submitButtonRef);
         submitButtonRef.current.textContent = 'Войти';
       });
   }
 
   const disableSubmitButton = (submitButtonRef) => {
-    submitButtonRef.current.classList.add('info-form__save-button_disabled');
+    if (submitButtonRef.current.classList.contains('profile__save-button')) {
+      submitButtonRef.current.classList.add('profile__save-button_disabled');
+    } else {
+      submitButtonRef.current.classList.add('info-form__save-button_disabled');
+    }
     submitButtonRef.current.setAttribute('disabled', true);
   };
 
@@ -68,10 +76,7 @@ function App() {
         authenticateToMovies(email, password);
       })
       .catch((err) => {
-        disableSubmitButton(submitButtonRef);
-        setIsAuthError(true);
-        setErrorMsg(`${err.message}`);
-        console.log(`${err.message} ${err.status}`);
+        handleSubmitError(err, submitButtonRef);
       })
       .finally(() => {
         submitButtonRef.current.textContent = 'Зарегистрироваться';
@@ -81,6 +86,38 @@ function App() {
   const handleLogin = (email, password, submitButtonRef) => {
     submitButtonRef.current.textContent = 'Войти...';
     authenticateToMovies(email, password, submitButtonRef);
+  };
+
+  const handlePatchProfile = (newUserData, submitButtonRef, setUserEmail, setUserName, setPopupIsOpen) => {
+    submitButtonRef.current.textContent = 'Редактировать...';
+    api.patchCurrentUserData(newUserData)
+      .then((res) => {
+        setPopupIsOpen(true);
+        setCurrentUser({
+          _id: res.data._id,
+          name: res.data.name,
+          email: res.data.email,
+        });
+      })
+      .catch((err) => {
+        handleSubmitError(err, submitButtonRef);
+        setUserName(currentUser.name);
+        setUserEmail(currentUser.email);
+      })
+      .finally(() => {
+        submitButtonRef.current.textContent = 'Редактировать';
+      });
+  };
+
+  const handleLogout = () => {
+    setLoggedIn(false);
+    setCurrentUser({
+      _id: '',
+      name: '',
+      email: '',
+    });
+    localStorage.clear();
+    Auth.logout();
   };
 
   return (
@@ -101,6 +138,11 @@ function App() {
             path="/profile"
             loggedIn={loggedIn}
             component={Profile}
+            onPatchProfile={handlePatchProfile}
+            isAuthError={isAuthError}
+            errorMsg={errorMsg}
+            setIsAuthError={setIsAuthError}
+            onLogout={handleLogout}
           />
           <Route exact path="/">
             <Main />
