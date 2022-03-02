@@ -1,0 +1,161 @@
+.info-form {
+  min-width: 396px;
+  min-height: 380px;
+  width: calc(100% * (17 / 120) + 214.667px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.info-form__data {
+  width: 100%;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.info-form__error-message {
+  display: none;
+  margin: auto 0 0 0;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  font-weight: 400;
+  color:rgba(255, 64, 98, 1);
+}
+
+.info-form__error-message_active {
+  display: block;
+}
+
+.info-form__save-button {
+  display: block;
+  width: 100%;
+  height: 45px;
+  border: none;
+  padding: 0;
+  margin: auto 0 0 0;
+  background-color: #000;
+  color: #fff;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 500;
+  text-align: center;
+  border-radius: 3px;
+  transition: opacity .2s ease-in-out;
+}
+
+.info-form__save-button:hover {
+  opacity: .7;
+  cursor: pointer;
+}
+
+.info-form__save-button_disabled {
+  background-color: rgba(249, 249, 249, 1);
+  color: #000;
+  cursor: initial;
+}
+
+.info-form__save-button_disabled:hover {
+  cursor: default;
+  opacity: 1;
+}
+
+.info-form__label {
+  margin: 20px 0 0 0;
+  display: block;
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: 400;
+  color: rgba(160, 160, 160, 1);
+}
+
+.info-form__label:first-child {
+  margin: 0;
+}
+
+.info-form__input {
+  margin: 10px 0 0 0;
+  box-sizing: border-box;
+  padding: 15px;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  display: block;
+  width: 100%;
+  height: 46px;
+  background-color: rgba(249, 249, 249, 1);
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 400;
+}
+
+.info-form__input:focus {
+  outline: .5px solid #008c96;
+}
+
+.info-form__input_type_error {
+  border-bottom: 1px red solid;
+}
+
+.info-form__error-element {
+  display: none;
+  margin: 10px 0 0 0;
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: 400;
+  color: rgba(255, 64, 98, 1);
+}
+
+.info-form__error-element_visible {
+  display: block;
+}
+
+.info-form__login-wrapper {
+  margin: 16px 1px 0 0;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 400;
+  color: rgba(160, 160, 160, 1);
+}
+
+.info-form__login-link {
+  text-decoration: none;
+  color: #000;
+  margin: 0 0 0 6px;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 400;
+  transition: opacity .2s ease-in-out;
+}
+
+.info-form__login-link:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .info-form {
+    min-width: 260px;
+  }
+
+  .info-form__save-button {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .info-form__login-wrapper {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .info-form__login-link {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .info-form__error-message {
+    margin: auto 0 15px 0;
+  }
+}

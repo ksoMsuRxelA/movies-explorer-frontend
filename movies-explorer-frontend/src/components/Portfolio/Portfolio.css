@@ -1,0 +1,125 @@
+.portfolio {
+  width: calc(100% - 140px);
+  padding: 0 0 125px 0;
+  box-sizing: border-box;
+}
+
+.main__portfolio {
+  margin: 80px auto 0 auto;
+}
+
+.portfolio__title {
+  margin: 0;
+  font-size: 18px;
+  line-height: calc(20 / 18);
+  font-weight: 400;
+  color: rgba(160, 160, 160, 1);
+}
+
+.portfolio__list {
+  list-style: none;
+  padding: 0;
+  margin: 50px 0 0 0;
+}
+
+.portfolio__list-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0 0 0;
+  padding: 0 0 9px 0;
+  border-bottom: 1px solid rgba(232, 232, 232, 1);
+}
+
+.portfolio__list-item:first-child {
+  margin: 0;
+}
+
+.portfolio__list-item:last-child {
+  border: none;
+}
+
+.portfolio__link-text {
+  margin: 0;
+  font-size: 30px;
+  line-height: calc(50 / 30);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+.portfolio__link {
+  margin: 0 7px 0 0;
+  width: 19px;
+  height: 60px;
+  background-image: url('../../images/portfolio-link.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: opacity .2s ease-in-out;
+}
+
+.portfolio__link:hover {
+  opacity: .5;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .portfolio {
+    width: calc(100% - 100px);
+    padding: 0 0 90px 0;
+    box-sizing: border-box;
+  }
+
+  .main__portfolio {
+    margin: 1px auto 0 auto;
+  }
+
+  .portfolio__link-text {
+    margin: 0;
+    font-size: 28px;
+    line-height: calc(50 / 28);
+    font-weight: 400;
+    letter-spacing: -0.04em;
+  }
+
+  .portfolio__link {
+    margin: 0 6px 0 0;
+    width: 17px;
+    height: 60px;
+    background-position: 0px 19px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .portfolio {
+    width: calc(100% - 28px);
+    padding: 0 0 70px 0;
+  }
+
+  .main__portfolio {
+    margin: 0px auto 0 auto;
+  }
+
+  .portfolio__title {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .portfolio__list {
+    margin: 40px 0 0 0;
+  }
+
+  .portfolio__list-item {
+    margin: 20px 0 0 0;
+    padding: 0 0 19px 0;
+  }
+
+  .portfolio__link-text {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .portfolio__link {
+    width: 10px;
+    height: 20px;
+    background-position: 1px 8px;
+  }
+}

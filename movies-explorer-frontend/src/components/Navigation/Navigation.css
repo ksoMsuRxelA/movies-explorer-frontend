@@ -1,0 +1,34 @@
+.navigation {
+  width: 212px;
+  height: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__navigation {
+  margin: 0 0 0 62px;
+}
+
+.navigation__link {
+  font-size: 13px;
+  line-height: calc(18 / 13);
+  text-decoration: none;
+  color: #000;
+  transition: opacity .2s ease-in-out;
+}
+
+.navigation__link:hover {
+  opacity: .5;
+  cursor: pointer;
+}
+
+.navigation__link_active {
+  font-weight: 500;
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .navigation {
+    display: none;
+  }
+}
