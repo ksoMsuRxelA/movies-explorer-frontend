@@ -59,8 +59,10 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: 'https://api.moviechef.nomoredomains.rocks',
+  baseUrl: 'http://localhost:3000',
   headers: {
     'Content-Type': 'application/json',
   },
 });
+
+// https://api.moviechef.nomoredomains.rocks

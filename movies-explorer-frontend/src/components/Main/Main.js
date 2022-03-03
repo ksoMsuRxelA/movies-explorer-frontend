@@ -6,10 +6,10 @@ import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
 
-const Main = () => {
+const Main = ({ loggedIn }) => {
   return (
     <section className="main">
-      <Header inMain={true} onBurgerBtnClick={() => {}}/>
+      <Header isLoggedIn={loggedIn} onBurgerBtnClick={() => {}}/>
       <Promo />
       <AboutProject />
       <Techs />

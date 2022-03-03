@@ -7,7 +7,7 @@ import Footer from '../Footer/Footer';
 import { api } from '../../utils/MainApi';
 import { SHORT_MOVIE } from '../../utils/Consts';
 
-const SavedMovies = () => {
+const SavedMovies = ({ loggedIn }) => {
   const [ isBurgerActive, setIsBurgerActive ] = useState(false);
   const [ savedMovies, setSavedMovies ] = useState([]);
   const [ keywordInSaved, setKeywordInSaved ] = useState('');
@@ -139,7 +139,7 @@ const SavedMovies = () => {
 
   return (
     <section className="saved-movies">
-      <Header inMain={false} onBurgerBtnClick={ handleBurgerClick } />
+      <Header isLoggedIn={loggedIn} onBurgerBtnClick={ handleBurgerClick } />
       <BurgerMenu
         isBurgerActive={ isBurgerActive }
         onCloseBurgerBtnClick={ handleBurgerClick }

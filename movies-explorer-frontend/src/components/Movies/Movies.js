@@ -178,7 +178,7 @@ const Movies = ({ loggedIn }) => {
 
   return (
     <section className="movies">
-      <Header inMain={false} onBurgerBtnClick={handleBurgerClick}/>
+      <Header isLoggedIn={loggedIn} onBurgerBtnClick={handleBurgerClick}/>
       <BurgerMenu
         isBurgerActive={ isBurgerActive }
         onCloseBurgerBtnClick={handleBurgerClick}

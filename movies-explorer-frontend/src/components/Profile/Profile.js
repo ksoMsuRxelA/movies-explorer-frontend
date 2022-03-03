@@ -6,7 +6,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import FormValidator from '../../utils/FormValidator';
 import { objSelectors_Profile } from '../../utils/Consts';
 
-const Profile = ({ onPatchProfile, isAuthError, errorMsg, setIsAuthError, onLogout }) => {
+const Profile = ({ loggedIn, onPatchProfile, isAuthError, errorMsg, setIsAuthError, onLogout }) => {
   const currentUser = useContext(CurrentUserContext);
   const [ isBurgerActive, setIsBurgerActive ] = useState(false);
   const [ userName, setUserName ] = useState(currentUser.name);
@@ -54,7 +54,7 @@ const Profile = ({ onPatchProfile, isAuthError, errorMsg, setIsAuthError, onLogo
 
   return (
     <section className="profile">
-      <Header inMain={false} onBurgerBtnClick={ handleBurgerClick }/>
+      <Header isLoggedIn={loggedIn} onBurgerBtnClick={ handleBurgerClick }/>
       <BurgerMenu isBurgerActive={ isBurgerActive } onCloseBurgerBtnClick={ handleBurgerClick } />
       <div className="profile__content">
         <h2 className="profile__title">{`Привет, ${currentUser.name}!`}</h2>
