@@ -67,7 +67,7 @@ const Profile = ({ loggedIn, onPatchProfile, isAuthError, errorMsg, setIsAuthErr
             <span className="profile__error-element name-input-error"></span>
             <div className="profile__input-wrapper">
               <span className="profile__input-tag">E-mail</span>
-              <input className="profile__input" id="email-input" type="email" value={ userEmail } onChange={ handleEmailChange } placeholder="Ваш E-mail" name="email" required minLength="2" maxLength="40" />
+              <input className="profile__input" id="email-input" type="email" value={ userEmail } onChange={ handleEmailChange } placeholder="Ваш E-mail" name="email" pattern="^[a-z0-9+_.-]+@[a-z0-9.-]+\.[a-z]+$" required minLength="2" maxLength="40" />
             </div>
             <span className="profile__error-element email-input-error"></span>
           </fieldset>
