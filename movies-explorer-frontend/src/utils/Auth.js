@@ -10,7 +10,7 @@ async function checkResponse(res) {
 }
 
 export const register = (name, email, password) => {
-  return fetch(`${LOCAL_URL}/signup`, {
+  return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -21,7 +21,7 @@ export const register = (name, email, password) => {
 }
 
 export const authorize = (email, password) => {
-  return fetch(`${LOCAL_URL}/signin`, {
+  return fetch(`${BASE_URL}/signin`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ export const authorize = (email, password) => {
 }
 
 export const logout = () => {
-  return fetch(`${LOCAL_URL}/signout`, {
+  return fetch(`${BASE_URL}/signout`, {
     method: 'POST',
     credentials: 'include',
   })
