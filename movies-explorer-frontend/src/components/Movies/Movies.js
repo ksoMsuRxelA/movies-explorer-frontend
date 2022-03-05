@@ -145,6 +145,11 @@ const Movies = ({ loggedIn }) => {
     api.postNewSavedMovie(movie)
       .then((newMovie) => {
         setSavedMovies([...savedMovies, newMovie]);
+        setDesiredFilms((desiredFilms) => {
+          return desiredFilms.map((tmpFilm) => {
+            return tmpFilm.nameRU === movie.nameRU ? newMovie.data : tmpFilm;
+          });
+        });
       })
       .catch((err) => {
         console.log(`${err.message} ${err.status}`);

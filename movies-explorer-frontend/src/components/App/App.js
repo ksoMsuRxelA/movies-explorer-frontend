@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Switch, Route, useHistory } from 'react-router-dom';
+import { useState, useLayoutEffect } from 'react';
+import { Switch, Route, useHistory, Redirect, useLocation } from 'react-router-dom';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
@@ -13,13 +13,15 @@ import * as Auth from '../../utils/Auth';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function App() {
+
   const [currentUser, setCurrentUser ] = useState({ _id: '', name: '', email: '' });
   const [loggedIn, setLoggedIn] = useState(false);
   const [isAuthError, setIsAuthError] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
   const history = useHistory();
+  const location = useLocation();
 
-  useEffect(() => { // данным эффектом проверяем валидность токена авторизации и если он оказался валидным, то получаем данные пользователя.
+  useLayoutEffect(() => { // данным эффектом проверяем валидность токена авторизации и если он оказался валидным, то получаем данные пользователя.
     api.getCurrentUserData()
     .then((currentUserData) => {
       setCurrentUser({
@@ -28,7 +30,10 @@ function App() {
         email: currentUserData.data.email,
       });
       setLoggedIn(true);
-      history.push('/movies');
+      // history.push('/movies');
+      if (location.pathname === '/') {
+        history.push('/movies');
+      }
     })
     .catch((err) => {
       history.push('/');
@@ -118,6 +123,7 @@ function App() {
     });
     localStorage.clear();
     Auth.logout();
+    window.location.reload();
   };
 
   return (
@@ -148,20 +154,22 @@ function App() {
             <Main loggedIn={loggedIn} />
           </Route>
           <Route path="/signup">
-            <Register
-              onRegister={handleRegister}
-              isAuthError={isAuthError}
-              errorMsg={errorMsg}
-              setIsAuthError={setIsAuthError}
-            />
+            { loggedIn ? <Redirect to="./" /> : <Register
+                onRegister={handleRegister}
+                isAuthError={isAuthError}
+                errorMsg={errorMsg}
+                setIsAuthError={setIsAuthError}
+              />
+            }
           </Route>
           <Route path="/signin">
-            <Login
+            { loggedIn ? <Redirect to="./" /> : <Login
               onLogin={handleLogin}
               isAuthError={isAuthError}
               errorMsg={errorMsg}
               setIsAuthError={setIsAuthError}
-            />
+              />
+            }
           </Route>
           <Route path="*">
             <NotFound />
