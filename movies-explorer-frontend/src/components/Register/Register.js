@@ -56,12 +56,12 @@ const Register = ({ onRegister, isAuthError, errorMsg, setIsAuthError }) => {
             <label className="info-form__label" htmlFor="email-input">
               E-mail
             </label>
-            <input id="email-input" className="info-form__input" type="email" value={email} onChange={handleEmailChange} placeholder="Ваш E-mail" name="email" required />
+            <input id="email-input" className="info-form__input" type="email" value={email} onChange={handleEmailChange} placeholder="Ваш E-mail" name="email" pattern="^[a-z0-9+_.-]+@[a-z0-9.-]+\.[a-z]+$" required />
             <span className="info-form__error-element email-input-error"></span>
             <label className="info-form__label" htmlFor="password-input">
               Пароль
             </label>
-            <input id="password-input" className="info-form__input" type="password" value={password} onChange={handlePasswordChange} placeholder="Ваш пароль" name="password" required minLength="6" />
+            <input id="password-input" className="info-form__input" type="password" value={password} onChange={handlePasswordChange} placeholder="Ваш пароль" name="password" minLength="6" required />
             <span className="info-form__error-element password-input-error"></span>
           </div>
         </InfoForm>

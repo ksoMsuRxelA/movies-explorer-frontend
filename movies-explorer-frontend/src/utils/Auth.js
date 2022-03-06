@@ -1,4 +1,5 @@
 export const BASE_URL = 'https://api.moviechef.nomoredomains.rocks';
+const LOCAL_URL = 'http://localhost:3000';
 
 async function checkResponse(res) {
   if (res.ok) {

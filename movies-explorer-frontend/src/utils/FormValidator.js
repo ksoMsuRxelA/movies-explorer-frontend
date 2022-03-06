@@ -16,6 +16,12 @@ class FormValidator {
       } else {
         evt.target.setCustomValidity("");
       }
+    } else if (evt.target.id === 'email-input') {
+      if (evt.target.validity.patternMismatch) {
+        evt.target.setCustomValidity("Невалидное значение поля электронной почты.");
+      } else {
+        evt.target.setCustomValidity("");
+      }
     }
     this._checkInputValidity(evt.target);
     this._toggleButtonState(evt.target);

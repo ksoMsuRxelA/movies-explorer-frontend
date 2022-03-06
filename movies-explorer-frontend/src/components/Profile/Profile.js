@@ -6,7 +6,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import FormValidator from '../../utils/FormValidator';
 import { objSelectors_Profile } from '../../utils/Consts';
 
-const Profile = ({ onPatchProfile, isAuthError, errorMsg, setIsAuthError, onLogout }) => {
+const Profile = ({ loggedIn, onPatchProfile, isAuthError, errorMsg, setIsAuthError, onLogout }) => {
   const currentUser = useContext(CurrentUserContext);
   const [ isBurgerActive, setIsBurgerActive ] = useState(false);
   const [ userName, setUserName ] = useState(currentUser.name);
@@ -54,7 +54,7 @@ const Profile = ({ onPatchProfile, isAuthError, errorMsg, setIsAuthError, onLogo
 
   return (
     <section className="profile">
-      <Header inMain={false} onBurgerBtnClick={ handleBurgerClick }/>
+      <Header isLoggedIn={loggedIn} onBurgerBtnClick={ handleBurgerClick }/>
       <BurgerMenu isBurgerActive={ isBurgerActive } onCloseBurgerBtnClick={ handleBurgerClick } />
       <div className="profile__content">
         <h2 className="profile__title">{`Привет, ${currentUser.name}!`}</h2>
@@ -67,7 +67,7 @@ const Profile = ({ onPatchProfile, isAuthError, errorMsg, setIsAuthError, onLogo
             <span className="profile__error-element name-input-error"></span>
             <div className="profile__input-wrapper">
               <span className="profile__input-tag">E-mail</span>
-              <input className="profile__input" id="email-input" type="email" value={ userEmail } onChange={ handleEmailChange } placeholder="Ваш E-mail" name="email" required minLength="2" maxLength="40" />
+              <input className="profile__input" id="email-input" type="email" value={ userEmail } onChange={ handleEmailChange } placeholder="Ваш E-mail" name="email" pattern="^[a-z0-9+_.-]+@[a-z0-9.-]+\.[a-z]+$" required minLength="2" maxLength="40" />
             </div>
             <span className="profile__error-element email-input-error"></span>
           </fieldset>
